@@ -1,0 +1,6 @@
+[package]
+name = "spreadsheet_textconv"
+version = "0.1.0"
+authors = ["YUJI takahashi <jit.y.31@gmail.com>"]
+
+[dependencies]
