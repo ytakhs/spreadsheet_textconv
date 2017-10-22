@@ -36,7 +36,7 @@ fn main() {
         let mut output: Vec<String> = Vec::new();
 
         for row in rows {
-            let sheet_name = "[".to_string() + &name.to_string() + "]\t";
+            let sheet_name: String = "[".to_string() + &name.to_string() + "]\t";
             output.push(sheet_name);
             for cell in row.iter() {
                 let value = match *cell {
