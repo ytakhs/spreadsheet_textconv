@@ -18,10 +18,15 @@ lazy_static! {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+    if args.len() != 2 {
+        panic!("Usage: spreadsheet_textconv file.xlsx");
+    }
     let file_path: &Path = Path::new(args.get(1).unwrap());
-    let display = file_path.display();
     let mut workbook: Sheets = match Sheets::open(file_path) {
-        Err(why) => panic!("couldn't open {}: {}", display, Error::description(&why)),
+        Err(why) => {
+            let display = file_path.display();
+            panic!("couldn't open {}: {}", display, Error::description(&why));
+        }
         Ok(file) => file,
     };
     let sheet_names: Vec<String> = workbook.sheet_names().unwrap();
