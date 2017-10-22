@@ -47,7 +47,7 @@ fn main() {
                     DataType::Bool(ref boolean) => boolean.to_string(),
                     DataType::Error(ref err) => err.to_string(),
                 };
-                let replaced_value: String = replace_special_chars(&value);
+                let replaced_value: String = replace_special_chars(value);
                 output.push(replaced_value);
                 output.push("\t".to_string());
             }
@@ -58,10 +58,11 @@ fn main() {
     }
 }
 
-fn replace_special_chars(cell: &String) -> String {
-    let bs_str = REGEX_BS.replace_all(cell.as_str(), "\\\\").to_string();
-    let n_str = REGEX_N.replace_all(bs_str.as_str(), "\\n").to_string();
-    let r_str = REGEX_R.replace_all(n_str.as_str(), "\\r").to_string();
-    let t_str = REGEX_T.replace_all(r_str.as_str(), "\\t").to_string();
-    t_str
+fn replace_special_chars(cell: String) -> String {
+    let mut value = cell;
+    value = REGEX_BS.replace_all(value.as_str(), "\\\\").to_string();
+    value = REGEX_N.replace_all(value.as_str(), "\\n").to_string();
+    value = REGEX_R.replace_all(value.as_str(), "\\r").to_string();
+    value = REGEX_T.replace_all(value.as_str(), "\\t").to_string();
+    value
 }
