@@ -2,6 +2,14 @@
 name = "spreadsheet_textconv"
 version = "0.1.0"
 authors = ["YUJI takahashi <jit.y.31@gmail.com>"]
+description = "Command tool for converting spreadsheet file (e.g.: .xlsx, .xls) to text"
+repository = "https://github.com/jit-y/spreadsheet_textconv"
+license = "MIT"
+license-file = "./LICENSE"
+include = [
+  "**/*.rs",
+  "Cargo.toml",
+]
 
 [dependencies]
 calamine = "0.11.8"
